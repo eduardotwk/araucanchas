@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Cancha extends Model
 {
     use HasFactory;
+    protected $table = 'canchas';
+    protected $fillable = [
+        'nombre_cancha',
+        'tarifa',
+        'recinto_id',
+    ];
 }
