@@ -1,55 +1,45 @@
-@extends('layouts.app')
+@extends('layouts.guest')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Ingresar') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Usuario') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+    <section class="hero is-success is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title has-text-black">Login</h3>
+                    <hr class="login-hr">
+                    <p class="subtitle has-text-black">Please login to proceed.</p>
+                    <div class="box">
+                        <figure class="avatar">
+                            <img src="https://placehold.it/128x128">
+                        </figure>
+                        <form>
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input is-large" type="email" placeholder="Your Email" autofocus="">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="contrasena" type="password" class="form-control @error('contrasena') is-invalid @enderror" name="contrasena" required autocomplete="current-password">
-
-                                @error('contrasena')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input is-large" type="password" placeholder="Your Password">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Ingresar') }}
-                                </button>
-
+                            <div class="field">
+                                <label class="checkbox">
+                                    <input type="checkbox">
+                                    Remember me
+                                </label>
                             </div>
-                        </div>
-                    </form>
+                            <button class="button is-block is-info is-large is-fullwidth">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                    <p class="has-text-grey">
+                        <a href="../">Sign Up</a> &nbsp;·&nbsp;
+                        <a href="../">Forgot Password</a> &nbsp;·&nbsp;
+                        <a href="../">Need Help?</a>
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 @endsection
