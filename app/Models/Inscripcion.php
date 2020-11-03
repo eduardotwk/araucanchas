@@ -10,6 +10,7 @@ class Inscripcion extends Model
     use HasFactory;
     protected $table = 'inscripcions';
     protected $fillable = [
+        'id',
         'valor_inscripcion',
         'fecha_torneo',
         'equipo_id',

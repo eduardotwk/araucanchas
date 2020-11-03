@@ -10,6 +10,7 @@ class Recinto extends Model
     use HasFactory;
     protected $table = 'recintos';
     protected $fillable = [
+        'id',
         'nombre_recinto',
         'ubicacion',
         'contacto',

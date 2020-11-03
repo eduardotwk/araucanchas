@@ -10,6 +10,7 @@ class Equipo extends Model
     use HasFactory;
     protected $table = 'equipos';
     protected $fillable = [
+        'id',
         'nombre',
         'cantidad_jugadores',
     ];
