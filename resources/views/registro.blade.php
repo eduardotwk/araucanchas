@@ -26,6 +26,15 @@
                 <option>19:00</option>
             </select>
         </div>
+        <div class="select">
+            <select>
+                <option>Canchas</option>
+                <option>Holandesa</option>
+            </select>
+        </div>
+        <br><br/>
+        <br><br/>
+
 
 
 
