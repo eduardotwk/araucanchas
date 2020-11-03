@@ -13,5 +13,6 @@ class Torneo extends Model
         'nombre_torneo',
         'cantidad_equipo',
         'info_torneo',
+        'i',
     ];
 }
