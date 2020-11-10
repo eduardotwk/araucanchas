@@ -1,4 +1,4 @@
-@extends('layouts.guest')
+@extends('layouts.app')
 
 @section('content')
     <section class="hero is-success is-fullheight">
@@ -12,31 +12,23 @@
                         <figure class="avatar">
                             <img src="https://placehold.it/128x128">
                         </figure>
-                        <form>
+                        <form method="POST" action="{{ route('login') }}">
                             <div class="field">
                                 <div class="control">
-                                    <input class="input is-large" type="email" placeholder="Your Email" autofocus="">
+                                    <input id="correo "class="input is-large" type="email" placeholder="Correo" name="correo" value="{{ old('correo') }}" required autocomplete="correo">
                                 </div>
                             </div>
 
                             <div class="field">
                                 <div class="control">
-                                    <input class="input is-large" type="password" placeholder="Your Password">
+                                    <input id="contrasena" class="input is-large" type="password" placeholder="Contraseña" >
                                 </div>
-                            </div>
-                            <div class="field">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Remember me
-                                </label>
                             </div>
                             <button class="button is-block is-info is-large is-fullwidth">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
                         </form>
                     </div>
                     <p class="has-text-grey">
-                        <a href="../">Sign Up</a> &nbsp;·&nbsp;
-                        <a href="../">Forgot Password</a> &nbsp;·&nbsp;
-                        <a href="../">Need Help?</a>
+                        <a href="/1">Sign Up</a> &nbsp;·&nbsp;
                     </p>
                 </div>
             </div>
