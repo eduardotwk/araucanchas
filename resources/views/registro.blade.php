@@ -15,7 +15,7 @@
 
         <div class="select">
             <select>
-                <option>Hora inicio</option>
+                <option>Hora Inicio</option>
                 <option>18:00</option>
             </select>
         </div>
