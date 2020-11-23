@@ -59,3 +59,4 @@
                 components: {Ejemplo}
             }
         </script>
+    </div>

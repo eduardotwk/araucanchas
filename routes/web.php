@@ -19,6 +19,12 @@ Route::get('/', function () {
 Route::get('/1', function () {
     return view('registro');
 });
+Route::get('/Recinto', function () {
+    return view('Recinto.index');
+});
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
