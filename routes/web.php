@@ -22,13 +22,19 @@ Route::get('/reserva', function () {
 Route::get('/recinto', function () {
     return view('Recintos');
 });
+Route::get('/Torneos', function () {
+    return view('torneo');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/recinto', [App\Http\Controllers\RecintoController::class, 'index'])->name('recinto');
+Auth::routes();
+
+Route::get('/torneos', [App\Http\Controllers\TorneoController::class, 'index'])->name('torneos');
 
 Auth::routes();
 
