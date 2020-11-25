@@ -16,12 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/1', function () {
+Route::get('/reserva', function () {
     return view('registro');
 });
-Route::get('/Recinto', function () {
-    return view('Recinto.index');
+Route::get('/recinto', function () {
+    return view('Recintos');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -8,14 +8,7 @@ class RecintoController extends Controller
 {
     public function index()
     {
-        return view('recinto.index');
+        return view('Recinto');
     }
-    public function create()
-    {
-        return view('recinto.create');
-    }
-    public function delete()
-    {
-        return view('recinto.delete');
-    }
+
 }
