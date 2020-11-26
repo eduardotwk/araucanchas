@@ -1,70 +1,66 @@
 @extends('layouts.app')
-
 @section('content')
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Torneos</h3>
-        </div>
+    <div class="row">
+        <section class="content">
+            <div class="col-md-8 col-md-offset-2">
 
-        <div class="form-group row">
-            <label for="nombre_torneo" class="col-md-4 col-form-label text-md-right">{{ __('Nombre Torneo') }}</label>
-            <div class="col-md-6">
-                <input id="nombre_torneo" type="nombre_torneo" class="form-control @error('nombre_torneo') is-invalid @enderror" name="nombre_torneo" value="{{ old('Nombre Torneo') }}" required autocomplete="Nombre Torneo">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Crea tu recinto</h3>
+                    </div>
 
-                @error('nombre_torneo')
-                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                @enderror
-            </div>
-        </div>
-
-        <div class="select">
-            <select>
-                <option>Cantidad de equipo</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-
-            </select>
-        </div>
-
-        <div class="select">
-            <select>
-                <option>Info torneo</option>
-
-            </select>
-        </div>
-        <br><br/>
-        <br><br/>
+                    <div class="panel-body">
+                        <div class="table-container">
+                            <form action="{{ route('recinto.store') }}" method="post" >
+                                {{ csrf_field() }}
+                                <div class="row">
 
 
 
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <label class="label">Nombre del recinto</label>
+                                        <div class="form-group">
+                                            <input type="text" name="nombre_recinto" id="nombre_recinto" class="form-control input-sm" placeholder="" required>
+                                        </div>
+                                    </div>
 
 
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <label class="label">Nombre torneo</label>
+                                        <div class="form-group">
+                                            <input type="text" name="nombre_torneo" id="ubicación" class="form-control input-sm" placeholder="" required>
+                                        </div>
+                                    </div>
 
-        <div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <label class="label">Cantidad equipo</label>
+                                        <div class="form-group">
+                                            <input type="text" name="cantidad_equipo" id="cantidad_equipo" class="form-control input-sm" placeholder="" required>
+                                        </div>
+                                    </div>
 
-            <div class="field is-grouped">
-                <div class="control">
-                    <button class="button is-link">Ingresar torneo</button>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <label class="label">Info torneo</label>
+                                        <div class="form-group">
+                                            <input type="text" name="info_torneo" id="info_torneo" class="form-control input-sm" placeholder="" required>
+                                        </div>
+                                    </div>
+                                    <div class="w-33">
+                                        <div class="center">
+                                            <input type="submit" class="btn btn-info" value="Registrar Torneo">
+                                        </div>
+                                    </div>
+
+                                    <a href="http://araucanchas.test/torneo" class="btn btn-info">Atras</a>
+
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="control">
-                    <button class="button is-link">Cancelar</button>
-                </div>
             </div>
-        </div>
-        @endsection
-
-        <script>
-            import Ejemplo from "../js/components/componentes/ejemplo";
-            export default {
-                components: {Ejemplo}
-            }
-        </script>
+        </section>
     </div>
+@endsection
