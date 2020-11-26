@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                        <a href="http://araucanchas.test/Recinto" class="btn btn-info">Continuar</a>
+                    {{ __('You are logged in!') }}
                 </div>
             </div>
         </div>

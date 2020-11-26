@@ -9,10 +9,5 @@ class Cancha extends Model
 {
     use HasFactory;
     protected $table = 'canchas';
-    protected $fillable = [
-        'id',
-        'nombre_cancha',
-        'tarifa',
-        'recinto_id',
-    ];
+    protected $fillable = ['id', 'nombre_cancha', 'tarifa', 'recinto_id',];
 }

@@ -16,25 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/reserva', function () {
+Route::get('/1', function () {
     return view('registro');
 });
-Route::get('/recinto', function () {
-    return view('Recintos');
-});
-Route::get('/Torneos', function () {
-    return view('torneo');
+Route::get('/Recinto', function () {
+    return view('Recinto.index');
 });
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/recinto', [App\Http\Controllers\RecintoController::class, 'index'])->name('recinto');
-Auth::routes();
-
-Route::get('/torneos', [App\Http\Controllers\TorneoController::class, 'index'])->name('torneos');
 
 Auth::routes();
 
