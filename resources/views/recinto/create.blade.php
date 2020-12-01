@@ -51,7 +51,7 @@
                                         </div>
                                     </div>
 
-                           <a href="http://araucanchas.test/Recinto" class="btn btn-info">Atras</a>
+
 
 
                                 </div>

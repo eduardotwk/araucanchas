@@ -23,8 +23,7 @@
                 <th>Ubicacion</th>
                 <th>Contacto</th>
                 <th>Cantidad de canchas</th>
-
-
+                <th>Accion</th>
             </tr>
             </thead>
             <?php $__currentLoopData = $recintos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -34,6 +33,22 @@
                     <td><?php echo e($value->ubicación); ?></td>
                     <td><?php echo e($value->contacto); ?></td>
                     <td><?php echo e($value->cantidad_canchas); ?></td>
+                    <td>
+                        <a href="<?php echo e(route('recinto.edit', $value)); ?>" class="btn btn-info">Editar</a>
+                    </td>
+                </tr>
+                <td>
+                    <form action="<?php echo e(route('recinto.destroy', $value)); ?>" method="post" >
+                        <?php echo csrf_field(); ?>
+                       <?php echo method_field('delete'); ?>
+                        <div class="w-33">
+                            <div class="center">
+                                <input type="submit" class="btn btn-info" value="Eliminar">
+                                <a href="http://araucanchas.test/Recinto/Cancha" class="btn btn-info">Crear cancha</a>
+                            </div>
+                        </div>
+                    </form>
+                </td>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 <?php $__env->stopSection(); ?>
 

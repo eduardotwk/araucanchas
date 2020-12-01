@@ -5,19 +5,17 @@
             <div class="col-md-8 col-md-offset-2">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Crea tu cancha</h3>
-                    </div>
+
                     <div class="panel-body">
                         <div class="table-container">
-                            <form method="POST" action="{{ route('cancha.store') }}"  role="form">
+                            <form action="{{ route('cancha.store') }}" method="post" >
                                 {{ csrf_field() }}
                                 <div class="row">
 
 
 
                                     <div class="col-xs-6 col-sm-6 col-md-6">
-                                        <label class="label">Numero cancha</label>
+                                        <label class="label">Numero de cancha</label>
                                         <div class="form-group">
                                             <input type="text" name="numero_cancha" id="numero_cancha" class="form-control input-sm" placeholder="" required>
                                         </div>
@@ -32,13 +30,25 @@
                                     </div>
 
 
-                                    <div class="col-xs-8 col-sm-8 col-md-">
-                                        <input type="submit"  value="Guardar" class="btn btn-success btn-block">
+                                    <label class="label">Nombre de tu recinto</label>
+                                    <select name="recinto_id" id="recinto_id" class="form control input-group-sm" placeholder="" required>
+                                        <option value="">-escoge tu recinto-</option>
+                                        @foreach($canchas as $value)
+                                            <option value="{{$value->id}}">{{$value->nombre_recinto}}</option>
+                                        @endforeach
 
-                                        <a href="{{ route('cancha.index') }}" class="btn btn-info btn-block" >Atrás</a>
 
 
+
+                                    <div class="w-33">
+                                        <div class="center">
+                                            <input type="submit" class="btn btn-info" value="Registrar">
+                                        </div>
                                     </div>
+
+
+
+
                                 </div>
                             </form>
                         </div>

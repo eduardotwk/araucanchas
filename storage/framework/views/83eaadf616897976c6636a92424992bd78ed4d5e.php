@@ -11,8 +11,10 @@
     <body>
 
     <div class="container">
-        <h2>Ingresa tu recinto</h2>
-
+        <h2>Registra tu recinto</h2>
+        <div class="btn-group">
+            <a href="http://araucanchas.test/Recinto/Create" class="btn btn-info">Registrar</a>
+        </div>
         <table class="table">
             <thead>
             <tr>
@@ -21,17 +23,40 @@
                 <th>Ubicacion</th>
                 <th>Contacto</th>
                 <th>Cantidad de canchas</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+                <th>Accion</th>
             </tr>
+            </thead>
             <?php $__currentLoopData = $recintos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
                     <td><?php echo e($value->id); ?></td>
                     <td><?php echo e($value->nombre_recinto); ?></td>
-                    <td><?php echo e($value->ubicacion); ?></td>
+                    <td><?php echo e($value->ubicación); ?></td>
                     <td><?php echo e($value->contacto); ?></td>
                     <td><?php echo e($value->cantidad_canchas); ?></td>
+                    <td>
+                        <a href="<?php echo e(route('recinto.edit', $value)); ?>" class="btn btn-info">Editar</a>
+                        <a href="" class="btn btn-info">Ver</a>
+                    </td>
+                </tr>
+
+                <td>
+                    <form action="<?php echo e(route('recinto.destroy', $value)); ?>" method="post" >
+                        <?php echo csrf_field(); ?>
+                       <?php echo method_field('delete'); ?>
+                        <div class="w-33">
+                            <div class="center">
+                                <input type="submit" class="btn btn-info" value="Eliminar">
+                            </div>
+                        </div>
+                    </form>
+
+
+                </td>
+
+
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
 <?php $__env->stopSection(); ?>
+
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\araucanchas\resources\views/Recinto/index.blade.php ENDPATH**/ ?>

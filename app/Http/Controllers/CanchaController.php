@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cancha;
 use Illuminate\Http\Request;
-
+use App\Models\Cancha;
+use App\Models\Recinto;
 class CanchaController extends Controller
 {
-
-
     public function index()
     {
         $canchas = Cancha::orderby('id','DESC')->paginate(10);
@@ -16,48 +14,39 @@ class CanchaController extends Controller
         return view('cancha.index', compact('canchas'));
 
     }
-
     public function create()
     {
-        return view('cancha.create');
+        $canchas =Recinto::all();
+        return view('cancha.create', compact('canchas'));
     }
-
-    public function destroy($id)
-    {
-        Cancha::find($id)->delete();
-        return redirect()->route('cancha.index')->wiht('success','eliminado exitoso');
-    }
-
-    public function update(Request $request, $id)    {
-        //dd('update');
-        $this->validate($request,[
-            'numero_cancha'=>'required',
-            'tarifa'=>'required',
-
-        ]);
-
-        Cancha::find($id)->update($request->all());
-        return redirect()->route('cancha.index')->with('success','Registro actualizado satisfactoriamente');
-
-    }
-    public function edit($id)
-    {
-        //dd('edit');
-        $cancha=Cancha::find($id);
-        return view('cancha.edit',compact('cancha'));
-    }
-
-
     public function store(Request $request)
     {
-        $request->validate([
-            'numero_cancha' => 'required',
-            'tarifa' => 'required',
-        ]);
+        //dd($request->all());
+        $cancha = new Cancha();
+        $cancha->numero_cancha = $request->numero_cancha;
+        $cancha->tarifa = $request->tarifa;
+        $cancha->recinto_id = $request->recinto_id;
 
-        Cancha::create($request->all());
-
+        $cancha->save();
         return redirect()->route('cancha.index')
-            ->with('success', 'Project created successfully.');
+            ;
+
+    }
+    public function destroy(Cancha $cancha)
+    {
+        $cancha->delete();
+        return redirect()->route('cancha.index');
+    }
+
+    public function edit(Cancha $cancha)
+    {
+        return view('cancha.edit', compact ('cancha'));
+    }
+    public function update(Request $request , Cancha $cancha)
+    {
+        $cancha->numero_cancha = $request->numero_cancha;
+        $cancha->tarifa = $request->tarifa;
+        $cancha->save();
+        return redirect()->route('cancha.index', $cancha);
     }
 }

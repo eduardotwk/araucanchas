@@ -24,8 +24,7 @@
                 <th>Ubicacion</th>
                 <th>Contacto</th>
                 <th>Cantidad de canchas</th>
-
-
+                <th>Accion</th>
             </tr>
             </thead>
             @foreach($recintos as $value)
@@ -35,6 +34,22 @@
                     <td>{{$value->ubicación}}</td>
                     <td>{{$value->contacto}}</td>
                     <td>{{$value->cantidad_canchas}}</td>
+                    <td>
+                        <a href="{{route('recinto.edit', $value)}}" class="btn btn-info">Editar</a>
+                    </td>
+                </tr>
+                <td>
+                    <form action="{{route('recinto.destroy', $value)}}" method="post" >
+                        @csrf
+                       @method('delete')
+                        <div class="w-33">
+                            <div class="center">
+                                <input type="submit" class="btn btn-info" value="Eliminar">
+                                <a href="http://araucanchas.test/Recinto/Cancha" class="btn btn-info">Crear cancha</a>
+                            </div>
+                        </div>
+                    </form>
+                </td>
             @endforeach
 @endsection
 

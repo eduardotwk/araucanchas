@@ -1,58 +1,56 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row">
-        <section class="content">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="pull-left"><h3>Lista Libros</h3></div>
-                        <div class="pull-right">
-                            <div class="btn-group">
-                                <a href="{{ route('cancha.create') }}" class="btn btn-info" >Añadir Libro</a>
+    <html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
 
+    <div class="container">
+        <div class="btn-group">
+            <a href="http://araucanchas.test/Recinto/Cancha/Create" class="btn btn-info">Registrar</a>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numero de cancha</th>
+                <th>Valor</th>
+                <th>id recinto</th>
+                <th>Accion</th>
+            </tr>
+            </thead>
+            @foreach($canchas as $cancha)
+                <tr>
+                    <td>{{$cancha->id}}</td>
+                    <td>{{$cancha->numero_cancha}}</td>
+                    <td>{{$cancha->tarifa}}</td>
+                    <td>{{$cancha->recinto_id}}</td>
+                    <td>
+                        <a href="{{route('cancha.edit', $cancha)}}" class="btn btn-info">Editar</a>
+                 </td>
+                    <td>
+                        <a href="http://araucanchas.test/Recinto/Cancha/Reserva/Create" class="btn btn-info">Reservar cancha</a>
+                    </td>
+
+
+                </tr>
+
+                <td>
+                    <form action="{{route('cancha.destroy', $cancha)}}" method="post" >
+                        @csrf
+                        @method('delete')
+                        <div class="w-33">
+                            <div class="center">
+                                <input type="submit" class="btn btn-info" value="Eliminar">
                             </div>
                         </div>
-                        <div class="table-container">
-                            <table id="mytable" class="table table-bordred table-striped">
-                                <thead>
-                                <th>Id</th>
-                                <th>Numero</th>
-                                <th>tarifa</th>
-                                <th>Editar</th>
-                                <th>Eliminar</th>
-                                </thead>
-                                <tbody>
-                                @if($canchas->count())
-                                    @foreach($canchas as $cancha)
-                                        <tr>
-                                            <td>{{$cancha->id}}</td>
-                                            <td>{{$cancha->numero_cancha}}</td>
-                                            <td>{{$cancha->tarifa}}</td>
-                                           <td><a class="btn btn-primary btn-xs" href="{{action('CanchaController@edit', $cancha->id)}}" ><span class="glyphicon glyphicon-pencil"></span></a></td>
-
-                                            <td>
-                                                <form action="{{action('CanchaController@destroy', $cancha->id)}}" method="post">
-                                                    {{csrf_field()}}
-                                                    <input name="_method" type="hidden" value="DELETE">
-
-                                                    <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @else
-                                    <tr>
-                                        <td colspan="8">No hay registro !!</td>
-                                    </tr>
-                                @endif
-                                </tbody>
-
-                            </table>
-                        </div>
-                    </div>
-                    {{ $canchas->links() }}
-                </div>
-            </div>
-        </section>
-    </div>
+                    </form>
+                </td>
+    @endforeach
 @endsection

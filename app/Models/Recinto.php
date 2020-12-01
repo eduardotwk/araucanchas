@@ -12,7 +12,7 @@ class Recinto extends Model
     protected $fillable = [
         'id',
         'nombre_recinto',
-        'ubicación',
+        'ubicacion',
         'contacto',
         'cantidad_cancha',
     ];
